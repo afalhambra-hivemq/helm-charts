@@ -3,7 +3,7 @@ on:
   push:
     branches: [master]
     paths:
-      - charts/hivemq-platform
+      - charts/hivemq-platform/**
   workflow_dispatch:
 jobs:
   release:
@@ -38,3 +38,5 @@ jobs:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           CR_SKIP_EXISTING: true
           CR_GENERATE_RELEASE_NOTES: true
+        with:
+          charts_dir: charts/hivemq-platform
