@@ -1,4 +1,4 @@
-name: Release Please Charts
+name: Create Release PR for charts
 
 on:
   push:
