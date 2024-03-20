@@ -2,6 +2,8 @@ name: Release Charts
 on:
   push:
     branches: [master]
+    paths:
+      - charts/hivemq-platform
   workflow_dispatch:
 jobs:
   release:
