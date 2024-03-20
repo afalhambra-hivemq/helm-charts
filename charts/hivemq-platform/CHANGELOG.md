@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.0](https://github.com/afalhambra-hivemq/helm-charts/compare/hivemq-platform-0.7.0...hivemq-platform-0.8.0) (2024-03-20)
+
+
+### Features
+
+* Update platform version ([#27](https://github.com/afalhambra-hivemq/helm-charts/issues/27)) ([33108fd](https://github.com/afalhambra-hivemq/helm-charts/commit/33108fd1949159e17126dbc5c6e1fa68bb27dc09))
+
 ## [0.7.0](https://github.com/afalhambra-hivemq/helm-charts/compare/hivemq-platform-v0.6.0...hivemq-platform-v0.7.0) (2024-03-20)
 
 
