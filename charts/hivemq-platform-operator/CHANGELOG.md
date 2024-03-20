@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/afalhambra-hivemq/helm-charts/compare/hivemq-platform-operator-v0.2.4...hivemq-platform-operator-v0.3.0) (2024-03-20)
+
+
+### Features
+
+* Updated platform operator image ([#24](https://github.com/afalhambra-hivemq/helm-charts/issues/24)) ([beee470](https://github.com/afalhambra-hivemq/helm-charts/commit/beee470be1755e6390b7f770f533d857b3c3c977))
+
 ## [0.2.4](https://github.com/afalhambra-hivemq/helm-charts/compare/hivemq-platform-operator-0.2.3...hivemq-platform-operator-v0.2.4) (2024-03-20)
 
 
