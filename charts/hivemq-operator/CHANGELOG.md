@@ -1,5 +1,37 @@
 # Changelog
 
+## [0.13.0](https://github.com/afalhambra-hivemq/helm-charts/compare/v0.12.0...v0.13.0) (2024-03-20)
+
+
+### Features
+
+* cross namespace mode ([#57](https://github.com/afalhambra-hivemq/helm-charts/issues/57)) ([e87bd62](https://github.com/afalhambra-hivemq/helm-charts/commit/e87bd626dab36782847a11350f00f9ca6a45511c))
+
+
+### Bug Fixes
+
+* add missing volumeClaimTemplates field in CRD template ([0afb89d](https://github.com/afalhambra-hivemq/helm-charts/commit/0afb89de397198faf5ec1d2e5f74d8e20b221077))
+* allow configuration of securityContext for admission webhooks ([4ab42cf](https://github.com/afalhambra-hivemq/helm-charts/commit/4ab42cf1b8b97d460639893cfdf30bcb4e66097e))
+* allow operator to update finalizers ([a74d39f](https://github.com/afalhambra-hivemq/helm-charts/commit/a74d39f1bc54a35ab3f0f361acf4f8d2107b20d7))
+* allow to specify initBusyboxImage and initDnsWaitImage for default hivemq cluster ([e5d2dde](https://github.com/afalhambra-hivemq/helm-charts/commit/e5d2dde8f4debcbe9702c3d461bf82252453b489))
+* change webhook for the upstream nginx version ([d6a8617](https://github.com/afalhambra-hivemq/helm-charts/commit/d6a861734ab9aae281ed224dc7311465f6699a5b))
+* default configuration to enable overload protection ([5013cff](https://github.com/afalhambra-hivemq/helm-charts/commit/5013cff9c98332134237b1eafd50a7485965df8a))
+* make volumeClaimTemplates field more consistent with remaining custom resource default values ([4f0d8ce](https://github.com/afalhambra-hivemq/helm-charts/commit/4f0d8cef92c31625e3b0845c7388784efc4ab7ea))
+* render podLabels in the custom resource template ([28bfc82](https://github.com/afalhambra-hivemq/helm-charts/commit/28bfc82742150f772cb9df23443db4173e2d11c7))
+* The default rest-api is disabled ([3e68dd9](https://github.com/afalhambra-hivemq/helm-charts/commit/3e68dd9814a9c5c26b407850e0838016c7503c1c))
+* update to correct config.xml override template, fix some PSP errors, fix operator cluster role permissions for PVC + event objects ([b5eb31e](https://github.com/afalhambra-hivemq/helm-charts/commit/b5eb31e5ca1ba2933f2176bda1d4294cbb73a356))
+* update to latest controller templates, latest v1 CRD, add user info for legacy CRD support, update generated manifests, add new field defaults ([595ec2f](https://github.com/afalhambra-hivemq/helm-charts/commit/595ec2fcfe6df4a995849e875cd9d4a88e98b19b))
+* Upgrade kube-prometheus-stack to version: 30.* ([#94](https://github.com/afalhambra-hivemq/helm-charts/issues/94)) ([300a61e](https://github.com/afalhambra-hivemq/helm-charts/commit/300a61e23adcda7bcccfb50bfec410fb231d679f))
+* version number ([4d71eb6](https://github.com/afalhambra-hivemq/helm-charts/commit/4d71eb62580c63a3d6ad77468c76ca1d0764a880))
+
+
+### Miscellaneous Chores
+
+* bump chart version + add changelog ([62b3e58](https://github.com/afalhambra-hivemq/helm-charts/commit/62b3e589c6d02be6bd82e86d13389011ef638163))
+* bump chart version to reflect template change ([b687ccc](https://github.com/afalhambra-hivemq/helm-charts/commit/b687cccabf4e01906349060ab439a74b794e5f2a))
+* **master:** [bot] release hivemq-operator:0.12.0 ([5d99caf](https://github.com/afalhambra-hivemq/helm-charts/commit/5d99cafca43aa6ba1df5b236f452042543eabe96))
+* update image versions, bump chart version, add changelog ([b292372](https://github.com/afalhambra-hivemq/helm-charts/commit/b292372f3f6b092f7fe9d8be6cfa6f3dc8285ee8))
+
 ## [0.12.0](https://github.com/afalhambra-hivemq/helm-charts/compare/hivemq-operator-0.11.34...hivemq-operator-v0.12.0) (2024-03-20)
 
 
