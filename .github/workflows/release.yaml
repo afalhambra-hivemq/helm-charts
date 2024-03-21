@@ -49,8 +49,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.2
-        with:
-          fetch-depth: 0
+
+      - name: Fetch history
+        run: git fetch --prune --unshallow
+
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
       - name: Generate release notes for the released charts
         env:
@@ -67,7 +73,7 @@ jobs:
               chart_name=$(echo "$chart_path" | cut -d'/' -f2)
           
               # Fetch latest and previous tag
-              git fetch --all
+              # git fetch --all
               tags=($(git tag --list "${chart_name}-[0-9]*.[0-9]*.[0-9]*" | sort -r | head -n 2))
               latest_tag="${tags[0]}"
               previous_tag="${tags[1]}"
