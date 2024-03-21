@@ -53,6 +53,8 @@ jobs:
           fetch-depth: 0
 
       - name: Generate release notes for the released charts
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -x
           # apk jq
