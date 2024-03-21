@@ -67,7 +67,7 @@ jobs:
               chart_name=$(echo "$chart_path" | cut -d'/' -f2)
           
               # Fetch latest and previous tag
-              tags=($(git tag --list '$chart_name-[0-9]*.[0-9]*.[0-9]*' | sort -r | head -n 2))
+              tags=($(git tag --list '${chart_name}-[0-9]*.[0-9]*.[0-9]*' | sort -r | head -n 2))
               latest_tag="${tags[0]}"
               previous_tag="${tags[1]}"
 
