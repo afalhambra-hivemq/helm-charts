@@ -3,14 +3,18 @@ on:
   push:
     branches: [master]
     paths:
-      - charts/hivemq-platform/**
+      - charts/**
   workflow_dispatch:
+
 jobs:
-  release:
+
+  release_charts:
     permissions:
       contents: write # to push chart release and create a release (helm/chart-releaser-action)
-
     runs-on: ubuntu-latest
+    outputs:
+      changed_charts: ${{ steps.chart-releaser.outputs.changed_charts }}
+      charts_version: ${{ steps.chart-releaser.outputs.chart_version }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
@@ -33,8 +37,25 @@ jobs:
           helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 
       - name: Run chart-releaser
+        id: chart-releaser
         uses: helm/chart-releaser-action@a917fd15b20e8b64b94d9158ad54cd6345335584 # v1.6.0
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           CR_SKIP_EXISTING: true
-          CR_GENERATE_RELEASE_NOTES: true
+
+  generate_release_notes:
+    needs: release_charts
+    if: needs.release_charts.outputs.changed_charts
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.2
+        with:
+          fetch-depth: 0
+
+      - name: Generate release notes for the released charts
+        run: |
+          released_charts_files="${{ needs.release_charts.outputs.changed_charts }}"
+          released_charts_version="${{ needs.release_charts.outputs.charts_version }}"
+          echo "released_charts_files: ${released_charts_files}"
+          echo "released_charts_version: ${released_charts_version}"
+          
