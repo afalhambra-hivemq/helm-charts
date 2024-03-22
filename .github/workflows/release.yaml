@@ -82,6 +82,11 @@ jobs:
                 -f previous_tag_name=${previous_tag} | jq -r '.body' > $chart_path/RELEASE_NOTES.md
   
                 # Update release notes for the chart release
-                gh release edit ${chart_name}-${latest_tag} --notes-file $chart_path/RELEASE_NOTES.md
+                if [ -f "$chart_path/RELEASE_NOTES.md" ]; then
+                  gh release edit ${chart_name}-${latest_tag} --notes-file $chart_path/RELEASE_NOTES.md
+                else
+                  echo "$chart_path/RELEASE_NOTES.md does not exist"
+                  exit 1
+                fi
               fi
           done
