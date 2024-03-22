@@ -71,8 +71,8 @@ jobs:
             latest_tag="${tags[0]}"
             previous_tag="${tags[1]}"
         
-            if [[ -z "$latest_tag" || -z "$previous_tag" || "$latest_tag" == "$previous_tag" ]]; then
-              echo "Latest or previous tag are either empty or are the same for chart $chart_name"
+            if [[ -z "$latest_tag" ]]; then
+              echo "Unable to fetch latest tag for chart `$chart_name`"
               exit 1
             else
               # Get release notes for chart
