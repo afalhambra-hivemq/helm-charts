@@ -2,7 +2,7 @@ apiVersion: v2
 name: hivemq-platform-operator
 description: HiveMQ Platform Operator Helm Chart (new)
 type: application
-version: 0.3.0
+version: 0.3.1
 appVersion: 1.2.0
 maintainers:
   - email: support@hivemq.com
