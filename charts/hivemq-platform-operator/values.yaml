@@ -20,7 +20,7 @@ logLevel: INFO
 
 # Configures the Operator ports for http/s. These ports provide access to metrics and other services.
 http:
-  port: 8080
+  port: 8081
 https:
   port: 8443
 
