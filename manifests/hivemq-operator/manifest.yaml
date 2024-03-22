@@ -1,5 +1,0 @@
-operator:
-  deployCr: false
-  admissionWebhooks:
-    enabled: false
-generateLabels: false
