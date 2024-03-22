@@ -11,7 +11,7 @@ image:
 # Settings for the HiveMQ Platform nodes
 nodes:
   # The number of HiveMQ nodes in the cluster
-  replicaCount: 3
+  replicaCount: 2
   logLevel: INFO
   javaOpts: "-XX:+UnlockExperimentalVMOptions -XX:InitialRAMPercentage=50 -XX:MaxRAMPercentage=50"
 
