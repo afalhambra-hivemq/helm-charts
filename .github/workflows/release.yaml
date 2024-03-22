@@ -75,13 +75,13 @@ jobs:
         run: |
           set -x
           
-          released_charts_paths="${{ needs.find-charts-to-release.outputs.changed_charts }}"
-          echo "Released charts: ${released_charts}"
+          released_chart_files="${{ needs.find-charts-to-release.outputs.changed_charts }}"
+          echo "Released chart files: ${released_chart_files}"
           
           # Generate release notes for each chart.
-          IFS=',' read -ra charts_paths <<< "$released_charts_paths"
-          for chart_path in "${charts_paths[@]}"; do
-            chart_name=$(echo "$chart_path" | cut -d'/' -f2)
+          IFS=',' read -ra chart_files <<< "$released_chart_files"
+          for chart_file in "${chart_files[@]}"; do
+            chart_name=$(echo "$chart_file" | cut -d'/' -f2)
         
             # Fetch latest and previous tag
             tags=($(git tag --list "${chart_name}-[0-9]*.[0-9]*.[0-9]*" | sort -r | head -n 2))
@@ -93,17 +93,18 @@ jobs:
               exit 1
             else
               # Get release notes for chart
+              release_notes="charts/$chart_name/RELEASE_NOTES.md"
               gh api \
               /repos/${{ github.repository }}/releases/generate-notes \
               -f tag_name=${latest_tag} \
               -f target_commitish=master \
-              -f previous_tag_name=${previous_tag} | jq -r '.body' > $chart_path/RELEASE_NOTES.md
+              -f previous_tag_name=${previous_tag} | jq -r '.body' > $release_notes
         
               # Update release notes for the chart release
-              if [ -f "$chart_path/RELEASE_NOTES.md" ]; then
-                gh release edit ${latest_tag} --notes-file $chart_path/RELEASE_NOTES.md
+              if [ -f "$release_notes" ]; then
+                gh release edit ${latest_tag} --notes-file $release_notes
               else
-                echo "$chart_path/RELEASE_NOTES.md does not exist"
+                echo "$release_notes does not exist"
                 exit 1
               fi
             fi
