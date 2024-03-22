@@ -37,7 +37,7 @@ nodes:
   #           runAsGroup: 0
   #           fsGroup: 10002
   podSecurityContext:
-    enabled: false
+    enabled: true
     runAsNonRoot: true
 
   # Specifies environment variables to be added to the HiveMQ Platform container.
