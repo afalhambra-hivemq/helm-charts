@@ -22,7 +22,7 @@ nodes:
   # Note: For production use-cases HiveMQ requires a minimum of 4 CPUs and 4G of memory.
   #       See: https://docs.hivemq.com/hivemq/latest/user-guide/system-requirements.html#minimum
   resources:
-    cpu: 1024m
+    cpu: 1025m
     memory: 2048M
 
   # Holds pod-level security attributes and common container settings.
