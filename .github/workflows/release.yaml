@@ -54,6 +54,8 @@ jobs:
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           CR_SKIP_EXISTING: true
+        with:
+          mark_as_latest: false
 
   generate-release-notes:
     runs-on: ubuntu-latest
