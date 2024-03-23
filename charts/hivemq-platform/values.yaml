@@ -164,7 +164,7 @@ services:
     exposed: true
     containerPort: 1883
     # Set if service port is different from container port
-    port: 1883
+    port: 1885
     # Set if different from ClusterIP. Possible values are `ClusterIP`, `NodePort` and `LoadBalancer`
     # serviceType: NodePort
     # Annotations to add to the service
