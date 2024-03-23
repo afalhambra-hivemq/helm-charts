@@ -35,7 +35,7 @@ jobs:
           fromTag: ${{ steps.fetch-latest-previous-tags.outputs.previous_tag }}
           toTag: ${{ steps.fetch-latest-previous-tags.outputs.latest_tag }}
           path: ${{ env.PLATFORM_CHART_PATH }}
-          outputFile: ${{ env.PLATFORM_CHART_PATH }}/RELEASE_NOTES.md
+          outputFile: RELEASE_NOTES.md
         env:
           GH_TOKEN: ${{ github.token }}
 
