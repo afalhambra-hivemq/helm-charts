@@ -44,7 +44,7 @@ jobs:
         with:
           name: charts-generated-release-notes
           path: |
-            ${{ steps.generate-release-notes.outputs.changelog }}
+            ${{ env.PLATFORM_CHART_PATH }}/RELEASE_NOTES.md
 
   release-charts:
     permissions:
