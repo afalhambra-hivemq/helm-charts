@@ -66,7 +66,8 @@ jobs:
         uses: mikepenz/release-changelog-builder-action@v4.2.0
         with:
           ignorePreReleases: true
-          fromTag: ${{ steps.fetch-latest-previous-tags.outputs.latest_tag }}
+          fromTag: ${{ steps.fetch-latest-previous-tags.outputs.previous_tag }}
+          toTag: ${{ steps.fetch-latest-previous-tags.outputs.latest_tag }}
           path: ${{ env.PLATFORM_CHART_PATH }}
           outputFile: RELEASE_NOTES.md
         env:
