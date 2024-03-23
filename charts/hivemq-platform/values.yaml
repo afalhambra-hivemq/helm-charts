@@ -172,7 +172,7 @@ services:
   # Secure MQTT service configuration
   - type: mqtt
     exposed: false
-    containerPort: 8885
+    containerPort: 8886
     # The name of the Kubernetes secret that contains the keystore file.
     keystoreSecretName: ""
     # The key of the Kubernetes secret that contains the keystore file. Defaults to `keystore`
