@@ -160,7 +160,7 @@ podScheduling:
 # Possible service types are: "control-center", "rest-api", "mqtt", "websocket"
 services:
   # MQTT service configuration
-  - type: mqtts
+  - type: mqtt
     exposed: true
     containerPort: 1883
     # Set if service port is different from container port
