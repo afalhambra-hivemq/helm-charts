@@ -16,7 +16,7 @@ resources:
   memory: 512M
 
 # Configures the log level, possible values are: "TRACE", "DEBUG", "INFO", "WARN", "ERROR"
-logLevel: INFO
+logLevel: DEBUG
 
 # Configures the Operator ports for http/s. These ports provide access to metrics and other services.
 http:
