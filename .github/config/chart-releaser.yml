@@ -1,5 +1,4 @@
-chart-dirs:
+chart_dirs:
   - charts
-generate-release-notes: false
-make-release-latest: false
-skip-existing: true
+mark_as_latest: false
+skip_existing: true
