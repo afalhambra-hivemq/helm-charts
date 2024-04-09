@@ -37,6 +37,6 @@ jobs:
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         with:
-          chart_dirs: charts
+          charts_dir: charts
           mark_as_latest: false
           skip_existing: true
