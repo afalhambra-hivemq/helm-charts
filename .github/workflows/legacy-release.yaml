@@ -37,4 +37,5 @@ jobs:
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         with:
-          config: .github/config/chart-releaser.yml
+          mark_as_latest: false
+          skip_existing: true
