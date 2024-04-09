@@ -3,4 +3,3 @@ chart-dirs:
 generate-release-notes: false
 make-release-latest: false
 skip-existing: true
-token: ${{ secrets.GITHUB_TOKEN }}
