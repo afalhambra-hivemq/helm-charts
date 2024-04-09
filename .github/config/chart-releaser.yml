@@ -1,0 +1,6 @@
+chart-dirs:
+  - charts
+generate-release-notes: false
+make-release-latest: false
+skip-existing: true
+token: ${{ secrets.GITHUB_TOKEN }}
