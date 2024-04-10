@@ -26,6 +26,29 @@ entries:
   hivemq-platform:
   - apiVersion: v2
     appVersion: 4.26.0
+    created: "2024-04-10T06:06:30.347010472Z"
+    description: HiveMQ Platform Helm Chart (new)
+    digest: 7b34f1c4859d4ec7d1f9e21adfb8fbb901fa5273dc63628f1c1b0d9af1cc047c
+    icon: https://www.hivemq.com/img/svg/hivemq-bee.svg
+    keywords:
+    - HiveMQ
+    - HiveMQ Platform
+    - Broker
+    - MQTT
+    - IoT
+    - Java
+    - distributed
+    - messaging
+    maintainers:
+    - email: support@hivemq.com
+      name: HiveMQ
+    name: hivemq-platform
+    type: application
+    urls:
+    - https://github.com/afalhambra-hivemq/helm-charts/releases/download/hivemq-platform-0.9.9/hivemq-platform-0.9.9.tgz
+    version: 0.9.9
+  - apiVersion: v2
+    appVersion: 4.26.0
     created: "2024-03-23T23:59:31.388843671Z"
     description: HiveMQ Platform Helm Chart (new)
     digest: b1cdb4a466c463d4056286c858e5ca5a2038af9a0b4ee0504c2cce0013dee726
@@ -255,4 +278,4 @@ entries:
     urls:
     - https://github.com/afalhambra-hivemq/helm-charts/releases/download/hivemq-swarm-0.2.32/hivemq-swarm-0.2.32.tgz
     version: 0.2.32
-generated: "2024-03-23T23:59:31.388873517Z"
+generated: "2024-04-10T06:06:30.34705214Z"
