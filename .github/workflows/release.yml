@@ -30,11 +30,28 @@ jobs:
         run: |
           helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 
+      # As https://colinwilson.uk/2022/01/27/how-to-sign-helm-charts-using-chart-releaser-action/
+      # More about generating GPG: https://blog.devops.dev/a-guide-to-signing-helm-charts-with-gpg-using-github-action-and-sign-images-on-artifacthub-958a23010e94
+      # New 2 Secrets added to Helm Chart repo:
+      #      - GPG_KEYRING_BASE64 (content of the /Users/antonio.alhambra/Projects/secring.gpg.base64)
+      #      - GPG_PASSPHRASE (usual password)
+      - name: Prepare GPG keys for signing HiveMQ Helm Charts
+        run: |
+          gpg_dir=.cr-gpg
+          mkdir "$gpg_dir"
+          keyring="$gpg_dir/secring.gpg"
+          base64 -d <<< "$GPG_KEYRING_BASE64" > "$keyring"
+          passphrase_file="$gpg_dir/passphrase"
+          echo "$GPG_PASSPHRASE" > "$passphrase_file"
+          echo "CR_PASSPHRASE_FILE=$passphrase_file" >> "$GITHUB_ENV"
+          echo "CR_KEYRING=$keyring" >> "$GITHUB_ENV"
+        env:
+          GPG_KEYRING: "${{ secrets.SIGNING_KEY }}"
+          GPG_PASSPHRASE: "${{ secrets.SIGNING_PASSWORD }}"
+
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@a917fd15b20e8b64b94d9158ad54cd6345335584 # v1.6.0
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         with:
-          charts_dir: charts
-          mark_as_latest: false
-          skip_existing: true
+          config: ./chart-releaser.yml

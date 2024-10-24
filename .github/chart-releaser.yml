@@ -1,0 +1,5 @@
+charts_dir: charts
+mark_as_latest: false
+skip_existing: true
+sign: true
+key: HiveMQ
