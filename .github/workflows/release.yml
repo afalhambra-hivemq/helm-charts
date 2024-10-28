@@ -34,14 +34,14 @@ jobs:
       - name: Prepare PGP keys for signing HiveMQ Helm charts
         run: |
           IFS=""
-          echo "$PGP_PRIVATE_KEY" | gpg --dearmor > $HOME/secring.gpg
-          echo "$PGP_PASSPHRASE" > $HOME/passphrase
+          echo ${{ secrets.SIGNING_KEY }} | gpg --dearmor > $HOME/secring.gpg
+          echo ${{ secrets.SIGNING_PASSWORD }} > $HOME/passphrase
 
           echo "CR_KEYRING=$HOME/secring.gpg" >> "$GITHUB_ENV"
           echo "CR_PASSPHRASE_FILE=$HOME/passphrase" >> "$GITHUB_ENV"
-        env:
-          PGP_PRIVATE_KEY: "${{ secrets.SIGNING_KEY }}"
-          PGP_PASSPHRASE: "${{ secrets.SIGNING_PASSWORD }}"
+#        env:
+#          PGP_PRIVATE_KEY: "${{ secrets.SIGNING_KEY }}"
+#          PGP_PASSPHRASE: "${{ secrets.SIGNING_PASSWORD }}"
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@a917fd15b20e8b64b94d9158ad54cd6345335584 # v1.6.0
