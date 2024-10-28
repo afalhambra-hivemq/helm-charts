@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout HiveMQ Helm Charts
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4
 
       - name: Fetch history
         run: git fetch --prune --unshallow
@@ -30,24 +30,28 @@ jobs:
         run: |
           helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 
+      # the GitHub repository secret `SIGNING_KEY` contains the private key in ASCII-armored format.
       - name: Prepare PGP keys for signing HiveMQ Helm charts
         run: |
           IFS=""
-          echo "${{ secrets.SIGNING_KEY }}" | gpg --dearmor > $HOME/secring.gpg
-          echo "${{ secrets.SIGNING_PASSWORD }}" > $HOME/passphrase
+          echo "$PGP_PRIVATE_KEY" | gpg --dearmor > $HOME/secring.gpg
+          echo "$PGP_PASSPHRASE" > $HOME/passphrase
 
           echo "CR_KEYRING=$HOME/secring.gpg" >> "$GITHUB_ENV"
           echo "CR_PASSPHRASE_FILE=$HOME/passphrase" >> "$GITHUB_ENV"
+        env:
+          PGP_PRIVATE_KEY: "${{ secrets.SIGNING_KEY }}"
+          PGP_PASSPHRASE: "${{ secrets.SIGNING_PASSWORD }}"
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@a917fd15b20e8b64b94d9158ad54cd6345335584 # v1.6.0
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         with:
-          config: .github/configs/chart-releaser.yml
+          config: ./.github/chart-releaser.yml
 
       - name: Cleanup GPG files
         if: always() # ensures cleanup even if the previous step fails
         run: |
           rm -f $HOME/secring.gpg
-          rm -f $HOME/passphrase           
+          rm -f $HOME/passphrase               
